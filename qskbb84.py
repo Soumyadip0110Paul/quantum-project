@@ -53,7 +53,7 @@ def write_to_csv(alice_bits, bob_bits, eve_bits):
             writer.writerow([a, b, e])
 
 # Parameters
-n = 20  # Number of qubits
+n = 100  # Number of qubits
 alice_bases = [np.random.randint(2) for _ in range(n)]  # Random bases for Alice
 bob_bases = [np.random.randint(2) for _ in range(n)]  # Random bases for Bob
 
@@ -79,7 +79,7 @@ result = job.result()
 counts = result.get_counts()
 
 # Extract Alice and Bob's bits
-alice_bits_measured = [key[0] for key in counts.keys()]
+eve_bits_measured = [key[0] for key in counts.keys()]
 bob_bits_measured = [key[::-1][0] for key in counts.keys()]
 
 # Compare bases and extract the final key
@@ -87,10 +87,10 @@ agreed_bases = compare_bases(alice_bases, bob_bases)
 final_key = extract_key(alice_bits, alice_bases, agreed_bases)
 
 # Write Alice, Bob, and Eve's bits to a CSV file
-write_to_csv(alice_bits, bob_bits_measured, alice_bits_measured)
+write_to_csv(alice_bits, bob_bits_measured, eve_bits_measured)
 
 # Print the results
 print("Alice's bits:", alice_bits)
 print("Bob's bits measured:", bob_bits_measured)
-print("Alice's bits measured:", alice_bits_measured)
+print("eve's bits measured:", eve_bits_measured)
 print("Final Key:", final_key)
