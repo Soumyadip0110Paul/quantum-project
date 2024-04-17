@@ -1,6 +1,8 @@
+
 from qiskit import *
+from numpy.random import randint
 from qiskit_aer import *
-from qiskit.visualization import plot_histogram
+from qiskit.visualization import plot_histogram ,  plot_bloch_multivector
 import numpy as np
 import csv
 
@@ -53,7 +55,7 @@ def write_to_csv(alice_bits, bob_bits, eve_bits):
             writer.writerow([a, b, e])
 
 # Parameters
-n = 100  # Number of qubits
+n = 10  # Number of qubits
 alice_bases = [np.random.randint(2) for _ in range(n)]  # Random bases for Alice
 bob_bases = [np.random.randint(2) for _ in range(n)]  # Random bases for Bob
 
@@ -94,3 +96,4 @@ print("Alice's bits:", alice_bits)
 print("Bob's bits measured:", bob_bits_measured)
 print("eve's bits measured:", eve_bits_measured)
 print("Final Key:", final_key)
+print(qc.draw())
