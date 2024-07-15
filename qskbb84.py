@@ -50,7 +50,7 @@ def extract_key(bits, bases, agreed_bases):
 def write_to_csv(alice_bits, bob_bits, eve_bits):
     with open('bb84_results.csv', mode='w') as file:
         writer = csv.writer(file)
-        writer.writerow(['Alice Bits', 'Bob Bits', 'Eve Bits'])
+        writer.writerow(['Alice_Bits', 'Bob_Bits', 'Eve_Bits'])
         for a, b, e in zip(alice_bits, bob_bits, eve_bits):
             writer.writerow([a, b, e])
 
